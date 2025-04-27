@@ -99,16 +99,16 @@ function initPhysicalLevel() {
         {x: 500, y: 360, width: 25, height: 25, color: osiLayers[0].color, collected: false, factIndex: 1},
         {x: 700, y: 310, width: 25, height: 25, color: osiLayers[0].color, collected: false, factIndex: 2}
     ];
-    enemies = [
-        {x: 350, y: 520, width: 30, height: 30, color: "#ff6666", speedX: 0.7, directionX: 1, 
-         minX: 250, maxX: 400}, // Added movement bounds
-        {x: 550, y: 380, width: 30, height: 20, color: "#ff6666", speedX: 0.8, directionX: 1,
-         minX: 450, maxX: 600} // Added movement bounds
-    ];
+//   enemies = [
+   //     {x: 350, y: 520, width: 30, height: 30, color: "#ff6666", speedX: 0.7, directionX: 1, 
+   //      minX: 250, maxX: 400}, // Added movement bounds
+    //    {x: 550, y: 380, width: 30, height: 20, color: "#ff6666", speedX: 0.8, directionX: 1,
+    //     minX: 450, maxX: 600} // Added movement bounds
+  //  ];
     door = {x: 720, y: 300, width: 40, height: 50, color: "#66cc66"};
     player.x = 50;
     player.y = 500;
-}
+
 
 // Level 2: Data Link Layer (Modified bounds and speeds)
 function initDataLinkLevel() {
@@ -126,10 +126,10 @@ function initDataLinkLevel() {
         {x: 400, y: 360, width: 25, height: 25, color: osiLayers[1].color, collected: false, factIndex: 1},
         {x: 600, y: 260, width: 25, height: 25, color: osiLayers[1].color, collected: false, factIndex: 2}
     ];
-    enemies = [
-        {x: 280, y: 480, width: 30, height: 20, color: "#ff6666", speedX: 0.8, directionX: 1,
-         minX: 200, maxX: 350}, // Added bounds for platform 2
-    ];
+ //   enemies = [
+   //     {x: 280, y: 480, width: 30, height: 20, color: "#ff6666", speedX: 0.8, directionX: 1,
+    //     minX: 200, maxX: 350}, // Added bounds for platform 2
+//    ];
     door = {x: 650, y: 250, width: 40, height: 50, color: "#66cc66"};
     player.x = 50;
     player.y = 500; // Start on ground
@@ -151,14 +151,14 @@ function initNetworkLevel() {
         {x: 330, y: 260, width: 25, height: 25, color: osiLayers[2].color, collected: false, factIndex: 1},
         {x: 530, y: 160, width: 25, height: 25, color: osiLayers[2].color, collected: false, factIndex: 2}
     ];
-    enemies = [
-        {x: 250, y: 460, width: 30, height: 20, color: "#ff6666", speedX: 0.9, directionX: 1,
-         minX: 200, maxX: 350}, // Added bounds for platform 2
-        {x: 450, y: 390, width: 30, height: 20, color: "#ff6666", speedX: 1.0, directionX: 1,
-         minX: 400, maxX: 550}, // Added bounds for platform 3
-        {x: 180, y: 230, width: 30, height: 20, color: "#ff6666", speedX: 0.8, directionX: 1,
-         minX: 150, maxX: 250} // Added bounds for platform 6
-    ];
+   // enemies = [
+   //     {x: 250, y: 460, width: 30, height: 20, color: "#ff6666", speedX: 0.9, directionX: 1,
+   //      minX: 200, maxX: 350}, // Added bounds for platform 2
+   //     {x: 450, y: 390, width: 30, height: 20, color: "#ff6666", speedX: 1.0, directionX: 1,
+  //       minX: 400, maxX: 550}, // Added bounds for platform 3
+   //     {x: 180, y: 230, width: 30, height: 20, color: "#ff6666", speedX: 0.8, directionX: 1,
+   //      minX: 150, maxX: 250} // Added bounds for platform 6
+  //  ];
     door = {x: 700, y: 290, width: 40, height: 50, color: "#66cc66"};
     player.x = 50;
     player.y = 500;
@@ -180,14 +180,14 @@ function initTransportLevel() {
         {x: 330, y: 240, width: 25, height: 25, color: osiLayers[3].color, collected: false, factIndex: 1},
         {x: 580, y: 110, width: 25, height: 25, color: osiLayers[3].color, collected: false, factIndex: 2}
     ];
-    enemies = [
-        {x: 200, y: 520, width: 40, height: 30, color: "#ff6666", speedX: 1.0, directionX: 1,
-         minX: 100, maxX: 400}, // Added bounds for ground
-        {x: 400, y: 520, width: 40, height: 30, color: "#ff6666", speedX: 0.9, directionX: -1,
-         minX: 300, maxX: 600}, // Added bounds for ground
-        {x: 600, y: 520, width: 40, height: 30, color: "#ff6666", speedX: 1.1, directionX: 1,
-         minX: 500, maxX: 750} // Added bounds for ground
-    ];
+   // enemies = [
+     //   {x: 200, y: 520, width: 40, height: 30, color: "#ff6666", speedX: 1.0, directionX: 1,
+      //   minX: 100, maxX: 400}, // Added bounds for ground
+    //    {x: 400, y: 520, width: 40, height: 30, color: "#ff6666", speedX: 0.9, directionX: -1,
+    //     minX: 300, maxX: 600}, // Added bounds for ground
+   //     {x: 600, y: 520, width: 40, height: 30, color: "#ff6666", speedX: 1.1, directionX: 1,
+    //     minX: 500, maxX: 750} // Added bounds for ground
+   // ];
     door = {x: 650, y: 100, width: 40, height: 50, color: "#66cc66"};
     player.x = 50;
     player.y = 500;
@@ -208,14 +208,14 @@ function initSessionLevel() {
         {x: 250, y: 220, width: 25, height: 25, color: osiLayers[4].color, collected: false, factIndex: 1},
         {x: 650, y: 150, width: 25, height: 25, color: osiLayers[4].color, collected: false, factIndex: 2}
     ];
-    enemies = [
-        {x: 300, y: 460, width: 30, height: 20, color: "#ff6666", speedX: 1.0, directionX: 1,
-         minX: 250, maxX: 550}, // Added bounds for platform 2
-        {x: 450, y: 310, width: 30, height: 20, color: "#ff6666", speedX: 0.9, directionX: 1,
-         minX: 400, maxX: 600}, // Added bounds for platform 4
-        {x: 500, y: 170, width: 30, height: 20, color: "#ff6666", speedX: 1.2, directionX: 1,
-         minX: 450, maxX: 750} // Added bounds for platform 6
-    ];
+  //  enemies = [
+   //     {x: 300, y: 460, width: 30, height: 20, color: "#ff6666", speedX: 1.0, directionX: 1,
+  //       minX: 250, maxX: 550}, // Added bounds for platform 2
+  //      {x: 450, y: 310, width: 30, height: 20, color: "#ff6666", speedX: 0.9, directionX: 1,
+  //       minX: 400, maxX: 600}, // Added bounds for platform 4
+  //      {x: 500, y: 170, width: 30, height: 20, color: "#ff6666", speedX: 1.2, directionX: 1,
+  //       minX: 450, maxX: 750} // Added bounds for platform 6
+ //   ];
     door = {x: 700, y: 140, width: 40, height: 50, color: "#66cc66"};
     player.x = 50;
     player.y = 500;
@@ -237,14 +237,14 @@ function initPresentationLevel() {
         {x: 350, y: 170, width: 25, height: 25, color: osiLayers[5].color, collected: false, factIndex: 1},
         {x: 650, y: 110, width: 25, height: 25, color: osiLayers[5].color, collected: false, factIndex: 2}
     ];
-    enemies = [
-        {x: 100, y: 380, width: 30, height: 20, color: "#ff6666", speedX: 0.9, directionX: 1,
-         minX: 0, maxX: 250}, // Added bounds for platform 3
-        {x: 400, y: 260, width: 30, height: 20, color: "#ff6666", speedX: 1.0, directionX: 1,
-         minX: 300, maxX: 450}, // Added bounds for platform 6
-        {x: 600, y: 130, width: 30, height: 20, color: "#ff6666", speedX: 1.1, directionX: 1,
-         minX: 550, maxX: 800} // Added bounds for platform 7
-    ];
+  //  enemies = [
+  //      {x: 100, y: 380, width: 30, height: 20, color: "#ff6666", speedX: 0.9, directionX: 1,
+  //       minX: 0, maxX: 250}, // Added bounds for platform 3
+   //     {x: 400, y: 260, width: 30, height: 20, color: "#ff6666", speedX: 1.0, directionX: 1,
+  //       minX: 300, maxX: 450}, // Added bounds for platform 6
+  //      {x: 600, y: 130, width: 30, height: 20, color: "#ff6666", speedX: 1.1, directionX: 1,
+   //      minX: 550, maxX: 800} // Added bounds for platform 7
+  //  ];
     door = {x: 750, y: 100, width: 40, height: 50, color: "#66cc66"};
     player.x = 50;
     player.y = 500;
@@ -266,14 +266,14 @@ function initApplicationLevel() {
         {x: 200, y: 210, width: 25, height: 25, color: osiLayers[6].color, collected: false, factIndex: 1},
         {x: 700, y: 110, width: 25, height: 25, color: osiLayers[6].color, collected: false, factIndex: 2}
     ];
-    enemies = [
-        {x: 350, y: 530, width: 30, height: 20, color: "#ff6666", speedX: 1.0, directionX: 1,
-         minX: 250, maxX: 450}, // Added bounds for first platform area
-        {x: 400, y: 300, width: 30, height: 20, color: "#ff6666", speedX: 0.9, directionX: 1,
-         minX: 350, maxX: 500}, // Added bounds for platform 4
-        {x: 500, y: 180, width: 30, height: 20, color: "#ff6666", speedX: 1.1, directionX: 1,
-         minX: 400, maxX: 600} // Added bounds for platform 6
-    ];
+   // enemies = [
+   //     {x: 350, y: 530, width: 30, height: 20, color: "#ff6666", speedX: 1.0, directionX: 1,
+   //      minX: 250, maxX: 450}, // Added bounds for first platform area
+    //    {x: 400, y: 300, width: 30, height: 20, color: "#ff6666", speedX: 0.9, directionX: 1,
+   //      minX: 350, maxX: 500}, // Added bounds for platform 4
+   //     {x: 500, y: 180, width: 30, height: 20, color: "#ff6666", speedX: 1.1, directionX: 1,
+   //      minX: 400, maxX: 600} // Added bounds for platform 6
+  //  ];
     door = {x: 750, y: 100, width: 40, height: 50, color: "#FFD700"};
     player.x = 50;
     player.y = 500;
