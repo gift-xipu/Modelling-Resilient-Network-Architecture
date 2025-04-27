@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSI Model Platformer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="gameContainer">
+        <h1>OSI Model Platformer</h1>
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <div id="gameInfo">
+             <p>Use <b>Arrow Keys</b> to move and jump.</p>
+             <p>Collect all info packets ('i') on a level to activate the door!</p>
+        </div>
+        <div id="levelInfo">Level 1: Physical Layer</div>
+         <div id="scoreDisplay">Score: 0</div>
+        <div id="infoPopup" class="infoPopup"></div> </div>
+
+    <script src="scripts/osiData.js"></script>      <script src="scripts/levels.js"></script>       <script src="scripts/player.js"></script>       <script src="scripts/rendering.js"></script>    <script src="scripts/game.js"></script>         </body>
+</html>
