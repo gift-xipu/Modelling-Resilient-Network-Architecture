@@ -1,3 +1,4 @@
+
 // scripts/levels.js
 
 // Game variables - accessible globally via script load order
@@ -9,7 +10,7 @@ let showingPopup = false;
 // Level elements - dynamically filled by loadLevel
 let platforms = [];
 let infoPackets = [];
-let enemies = [];
+let enemies = []; // This will always be set to [] in init functions now
 let door = {}; // Represents the exit door object
 
 // DOM Elements for UI updates
@@ -22,7 +23,7 @@ const infoPopup = document.getElementById('infoPopup');
 function loadLevel(level) {
     // Reset player state potentially needed here if carrying over issues
     // Ensure player object exists before trying to modify it
-    if (typeof player !== 'undefined') {
+     if (typeof player !== 'undefined') {
         player.x = 50; // Default starting X
         player.y = 500; // Default starting Y (adjust per level if needed)
         player.velX = 0;
@@ -30,8 +31,9 @@ function loadLevel(level) {
         player.jumping = false;
         player.grounded = true; // Assume starting grounded unless level places them mid-air
     } else {
-        console.error("Player object not defined when trying to load level!");
+         console.error("Player object not defined when trying to load level!");
     }
+
 
     switch(level) {
         case 1: initPhysicalLevel(); break;
@@ -47,18 +49,18 @@ function loadLevel(level) {
             initPhysicalLevel();
     }
 
-    // Ensure player start position is set correctly after level init overrides
-    if (typeof player !== 'undefined') {
-        // The init...Level functions should set the correct player.x, player.y
-    }
+     // Ensure player start position is set correctly after level init overrides
+     if (typeof player !== 'undefined') {
+         // The init...Level functions should set the correct player.x, player.y
+     }
 
     // Update level info display
     if (osiLayers[level-1]) {
         levelInfoDisplay.textContent = `Level ${level}: ${osiLayers[level-1].name}`;
     } else {
-        levelInfoDisplay.textContent = "OSI Model Platformer"; // Fallback
+         levelInfoDisplay.textContent = "OSI Model Platformer"; // Fallback
     }
-    scoreDisplay.textContent = `Score: ${score}`; // Update score display
+     scoreDisplay.textContent = `Score: ${score}`; // Update score display
 }
 
 // Show information popup
@@ -85,8 +87,9 @@ function hideInfoPopup() {
 
 
 // --- Level Initialization Functions ---
+// MODIFIED: All enemies arrays are set to empty []
 
-// Level 1: Physical Layer (Slowed down enemies)
+// Level 1: Physical Layer
 function initPhysicalLevel() {
     platforms = [
         {x: 0, y: 550, width: 800, height: 50, color: "#a9a9a9"}, // Ground
@@ -99,18 +102,13 @@ function initPhysicalLevel() {
         {x: 500, y: 360, width: 25, height: 25, color: osiLayers[0].color, collected: false, factIndex: 1},
         {x: 700, y: 310, width: 25, height: 25, color: osiLayers[0].color, collected: false, factIndex: 2}
     ];
-//   enemies = [
-   //     {x: 350, y: 520, width: 30, height: 30, color: "#ff6666", speedX: 0.7, directionX: 1, 
-   //      minX: 250, maxX: 400}, // Added movement bounds
-    //    {x: 550, y: 380, width: 30, height: 20, color: "#ff6666", speedX: 0.8, directionX: 1,
-    //     minX: 450, maxX: 600} // Added movement bounds
-  //  ];
+    enemies = []; // MODIFIED: Removed enemies
     door = {x: 720, y: 300, width: 40, height: 50, color: "#66cc66"};
     player.x = 50;
-    player.y = 500;
+    player.y = 500; // Start on ground
+}
 
-
-// Level 2: Data Link Layer (Modified bounds and speeds)
+// Level 2: Data Link Layer
 function initDataLinkLevel() {
     platforms = [
         {x: 0, y: 550, width: 150, height: 20, color: "#a9a9a9"}, // Start platform
@@ -119,30 +117,27 @@ function initDataLinkLevel() {
         {x: 600, y: 550, width: 200, height: 20, color: "#a9a9a9"}, // End platform
         {x: 300, y: 400, width: 200, height: 20, color: "#a9a9a9"}, // Higher platforms
         {x: 100, y: 300, width: 200, height: 20, color: "#a9a9a9"},
-        {x: 500, y: 300, width: 200, height: 20, color: "#a9a9a9"} // Platform for enemy 3 & door
+        {x: 500, y: 300, width: 200, height: 20, color: "#a9a9a9"} // Platform for door
     ];
     infoPackets = [
         {x: 250, y: 460, width: 25, height: 25, color: osiLayers[1].color, collected: false, factIndex: 0},
         {x: 400, y: 360, width: 25, height: 25, color: osiLayers[1].color, collected: false, factIndex: 1},
         {x: 600, y: 260, width: 25, height: 25, color: osiLayers[1].color, collected: false, factIndex: 2}
     ];
- //   enemies = [
-   //     {x: 280, y: 480, width: 30, height: 20, color: "#ff6666", speedX: 0.8, directionX: 1,
-    //     minX: 200, maxX: 350}, // Added bounds for platform 2
-//    ];
+    enemies = []; // MODIFIED: Removed enemies
     door = {x: 650, y: 250, width: 40, height: 50, color: "#66cc66"};
     player.x = 50;
     player.y = 500; // Start on ground
 }
 
-// Level 3: Network Layer (Added bounds and slowed enemies)
+// Level 3: Network Layer
 function initNetworkLevel() {
     platforms = [
         {x: 0, y: 550, width: 150, height: 20, color: "#a9a9a9"},
-        {x: 200, y: 480, width: 150, height: 20, color: "#a9a9a9"},
+        {x: 200, y: 480, width: 150, height: 20, color: "#a9a9a9"}, // Stepping up
         {x: 400, y: 410, width: 150, height: 20, color: "#a9a9a9"},
         {x: 600, y: 340, width: 200, height: 20, color: "#a9a9a9"},
-        {x: 300, y: 300, width: 100, height: 20, color: "#a9a9a9"},
+        {x: 300, y: 300, width: 100, height: 20, color: "#a9a9a9"}, // Small platforms
         {x: 150, y: 250, width: 100, height: 20, color: "#a9a9a9"},
         {x: 500, y: 200, width: 100, height: 20, color: "#a9a9a9"}
     ];
@@ -151,130 +146,96 @@ function initNetworkLevel() {
         {x: 330, y: 260, width: 25, height: 25, color: osiLayers[2].color, collected: false, factIndex: 1},
         {x: 530, y: 160, width: 25, height: 25, color: osiLayers[2].color, collected: false, factIndex: 2}
     ];
-   // enemies = [
-   //     {x: 250, y: 460, width: 30, height: 20, color: "#ff6666", speedX: 0.9, directionX: 1,
-   //      minX: 200, maxX: 350}, // Added bounds for platform 2
-   //     {x: 450, y: 390, width: 30, height: 20, color: "#ff6666", speedX: 1.0, directionX: 1,
-  //       minX: 400, maxX: 550}, // Added bounds for platform 3
-   //     {x: 180, y: 230, width: 30, height: 20, color: "#ff6666", speedX: 0.8, directionX: 1,
-   //      minX: 150, maxX: 250} // Added bounds for platform 6
-  //  ];
-    door = {x: 700, y: 290, width: 40, height: 50, color: "#66cc66"};
+    enemies = []; // MODIFIED: Removed enemies
+    door = {x: 700, y: 290, width: 40, height: 50, color: "#66cc66"}; // Door on platform
     player.x = 50;
     player.y = 500;
 }
 
-// Level 4: Transport Layer (Added bounds and slowed enemies)
+// Level 4: Transport Layer
 function initTransportLevel() {
     platforms = [
-        {x: 0, y: 550, width: 800, height: 50, color: "#a9a9a9"},
+        {x: 0, y: 550, width: 800, height: 50, color: "#a9a9a9"}, // Base platform
         {x: 100, y: 450, width: 100, height: 20, color: "#a9a9a9"},
         {x: 300, y: 400, width: 100, height: 20, color: "#a9a9a9"},
         {x: 500, y: 350, width: 100, height: 20, color: "#a9a9a9"},
-        {x: 300, y: 280, width: 100, height: 20, color: "#a9a9a9"},
+        {x: 300, y: 280, width: 100, height: 20, color: "#a9a9a9"}, // Mid air platforms
         {x: 100, y: 210, width: 100, height: 20, color: "#a9a9a9"},
-        {x: 500, y: 150, width: 200, height: 20, color: "#a9a9a9"}
+        {x: 500, y: 150, width: 200, height: 20, color: "#a9a9a9"} // Top platform
     ];
     infoPackets = [
         {x: 130, y: 410, width: 25, height: 25, color: osiLayers[3].color, collected: false, factIndex: 0},
         {x: 330, y: 240, width: 25, height: 25, color: osiLayers[3].color, collected: false, factIndex: 1},
         {x: 580, y: 110, width: 25, height: 25, color: osiLayers[3].color, collected: false, factIndex: 2}
     ];
-   // enemies = [
-     //   {x: 200, y: 520, width: 40, height: 30, color: "#ff6666", speedX: 1.0, directionX: 1,
-      //   minX: 100, maxX: 400}, // Added bounds for ground
-    //    {x: 400, y: 520, width: 40, height: 30, color: "#ff6666", speedX: 0.9, directionX: -1,
-    //     minX: 300, maxX: 600}, // Added bounds for ground
-   //     {x: 600, y: 520, width: 40, height: 30, color: "#ff6666", speedX: 1.1, directionX: 1,
-    //     minX: 500, maxX: 750} // Added bounds for ground
-   // ];
-    door = {x: 650, y: 100, width: 40, height: 50, color: "#66cc66"};
+    enemies = []; // MODIFIED: Removed enemies
+    door = {x: 650, y: 100, width: 40, height: 50, color: "#66cc66"}; // Door on top platform
     player.x = 50;
     player.y = 500;
 }
 
-// Level 5: Session Layer (Added bounds and slowed enemies)
+// Level 5: Session Layer
 function initSessionLevel() {
     platforms = [
         {x: 0, y: 550, width: 200, height: 20, color: "#a9a9a9"},
-        {x: 250, y: 480, width: 300, height: 20, color: "#a9a9a9"},
+        {x: 250, y: 480, width: 300, height: 20, color: "#a9a9a9"}, // Long platform
         {x: 100, y: 400, width: 200, height: 20, color: "#a9a9a9"},
         {x: 400, y: 330, width: 200, height: 20, color: "#a9a9a9"},
         {x: 200, y: 260, width: 150, height: 20, color: "#a9a9a9"},
-        {x: 450, y: 190, width: 300, height: 20, color: "#a9a9a9"}
+        {x: 450, y: 190, width: 300, height: 20, color: "#a9a9a9"} // Top long platform
     ];
     infoPackets = [
         {x: 180, y: 360, width: 25, height: 25, color: osiLayers[4].color, collected: false, factIndex: 0},
         {x: 250, y: 220, width: 25, height: 25, color: osiLayers[4].color, collected: false, factIndex: 1},
         {x: 650, y: 150, width: 25, height: 25, color: osiLayers[4].color, collected: false, factIndex: 2}
     ];
-  //  enemies = [
-   //     {x: 300, y: 460, width: 30, height: 20, color: "#ff6666", speedX: 1.0, directionX: 1,
-  //       minX: 250, maxX: 550}, // Added bounds for platform 2
-  //      {x: 450, y: 310, width: 30, height: 20, color: "#ff6666", speedX: 0.9, directionX: 1,
-  //       minX: 400, maxX: 600}, // Added bounds for platform 4
-  //      {x: 500, y: 170, width: 30, height: 20, color: "#ff6666", speedX: 1.2, directionX: 1,
-  //       minX: 450, maxX: 750} // Added bounds for platform 6
- //   ];
+    enemies = []; // MODIFIED: Removed enemies
     door = {x: 700, y: 140, width: 40, height: 50, color: "#66cc66"};
     player.x = 50;
     player.y = 500;
 }
 
-// Level 6: Presentation Layer (Added bounds and slowed enemies)
+// Level 6: Presentation Layer
 function initPresentationLevel() {
-    platforms = [
+     platforms = [
         {x: 0, y: 550, width: 150, height: 20, color: "#a9a9a9"},
-        {x: 200, y: 490, width: 150, height: 20, color: "#a9a9a9"},
-        {x: 0, y: 400, width: 250, height: 20, color: "#a9a9a9"},
+        {x: 200, y: 490, width: 150, height: 20, color: "#a9a9a9"}, // Steps up
+        {x: 0, y: 400, width: 250, height: 20, color: "#a9a9a9"},   // Platform on left
         {x: 300, y: 340, width: 150, height: 20, color: "#a9a9a9"},
         {x: 500, y: 280, width: 150, height: 20, color: "#a9a9a9"},
-        {x: 300, y: 210, width: 150, height: 20, color: "#a9a9a9"},
-        {x: 550, y: 150, width: 250, height: 20, color: "#a9a9a9"}
+        {x: 300, y: 210, width: 150, height: 20, color: "#a9a9a9"}, // Mid air platforms
+        {x: 550, y: 150, width: 250, height: 20, color: "#a9a9a9"} // Top platform
     ];
     infoPackets = [
         {x: 120, y: 360, width: 25, height: 25, color: osiLayers[5].color, collected: false, factIndex: 0},
         {x: 350, y: 170, width: 25, height: 25, color: osiLayers[5].color, collected: false, factIndex: 1},
         {x: 650, y: 110, width: 25, height: 25, color: osiLayers[5].color, collected: false, factIndex: 2}
     ];
-  //  enemies = [
-  //      {x: 100, y: 380, width: 30, height: 20, color: "#ff6666", speedX: 0.9, directionX: 1,
-  //       minX: 0, maxX: 250}, // Added bounds for platform 3
-   //     {x: 400, y: 260, width: 30, height: 20, color: "#ff6666", speedX: 1.0, directionX: 1,
-  //       minX: 300, maxX: 450}, // Added bounds for platform 6
-  //      {x: 600, y: 130, width: 30, height: 20, color: "#ff6666", speedX: 1.1, directionX: 1,
-   //      minX: 550, maxX: 800} // Added bounds for platform 7
-  //  ];
-    door = {x: 750, y: 100, width: 40, height: 50, color: "#66cc66"};
+     enemies = []; // MODIFIED: Removed enemies
+    door = {x: 750, y: 100, width: 40, height: 50, color: "#66cc66"}; // Top right door
     player.x = 50;
     player.y = 500;
 }
 
-// Level 7: Application Layer (Added bounds and slowed enemies)
+// Level 7: Application Layer
 function initApplicationLevel() {
-    platforms = [
+     platforms = [
         {x: 0, y: 550, width: 200, height: 20, color: "#a9a9a9"},
         {x: 250, y: 480, width: 200, height: 20, color: "#a9a9a9"},
         {x: 500, y: 410, width: 200, height: 20, color: "#a9a9a9"},
-        {x: 350, y: 320, width: 150, height: 20, color: "#a9a9a9"},
+        {x: 350, y: 320, width: 150, height: 20, color: "#a9a9a9"}, // Floating platforms
         {x: 150, y: 250, width: 150, height: 20, color: "#a9a9a9"},
         {x: 400, y: 200, width: 200, height: 20, color: "#a9a9a9"},
-        {x: 650, y: 150, width: 150, height: 20, color: "#a9a9a9"}
+        {x: 650, y: 150, width: 150, height: 20, color: "#a9a9a9"} // Final platform
     ];
     infoPackets = [
         {x: 300, y: 440, width: 25, height: 25, color: osiLayers[6].color, collected: false, factIndex: 0},
         {x: 200, y: 210, width: 25, height: 25, color: osiLayers[6].color, collected: false, factIndex: 1},
         {x: 700, y: 110, width: 25, height: 25, color: osiLayers[6].color, collected: false, factIndex: 2}
     ];
-   // enemies = [
-   //     {x: 350, y: 530, width: 30, height: 20, color: "#ff6666", speedX: 1.0, directionX: 1,
-   //      minX: 250, maxX: 450}, // Added bounds for first platform area
-    //    {x: 400, y: 300, width: 30, height: 20, color: "#ff6666", speedX: 0.9, directionX: 1,
-   //      minX: 350, maxX: 500}, // Added bounds for platform 4
-   //     {x: 500, y: 180, width: 30, height: 20, color: "#ff6666", speedX: 1.1, directionX: 1,
-   //      minX: 400, maxX: 600} // Added bounds for platform 6
-  //  ];
-    door = {x: 750, y: 100, width: 40, height: 50, color: "#FFD700"};
+    enemies = []; // MODIFIED: Removed enemies
+    // Final door leads to win condition in checkCollisions
+    door = {x: 750, y: 100, width: 40, height: 50, color: "#FFD700"}; // Gold door for finish
     player.x = 50;
     player.y = 500;
 }
